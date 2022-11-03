@@ -37,9 +37,10 @@ echo "Provisioned with Terraform. Secured with tenable.cs" > /usr/share/nginx/ht
 docker run --name some-nginx -v /usr/share/nginx/html:/usr/share/nginx/html:ro -d -p 80:80 nginx:1.21.0
 EOF
   tags = {
-    Name = "${local.prefix.value}-ec2-${count.index}"
+    Name    = "${local.prefix.value}-ec2-${count.index}"
     vm-scan = "true"
   }
+  monitoring = true
 }
 
 output "instances_public_ips" {
